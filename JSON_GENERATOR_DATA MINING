@@ -1,0 +1,55 @@
+[
+  '{{repeat(150,200)}}',
+  {
+    id: '{{objectId()}}',
+    index: '{{index()}}',
+    name: '{{firstName()}} {{surname()}}',
+    date: '{{date(new Date(2014, 0, 1), new Date(), "YYYY-MM-dd")}}',
+    time: '{{date(new Date(2014, 0, 1), new Date(), "hh:mm:ss")}}',
+    item: [
+      '{{repeat(15)}}',
+      {
+        status: '{{bool()}}',
+        product: '{{index(1)}}',
+        values: '{{integer(0,2)}}'
+      }
+    ],
+    text: function (tags) {
+      return 'Thanks, ' + this.name + '! for buying from our store';
+    }
+  }
+] 
+
+/////
+
+[
+  '{{repeat(15, 15)}}',
+  {
+    id: '{{index(1)}}',
+    name: function (tags) {
+      var tmp = [
+        'RAM',
+        'VGA',
+        'Processor',
+        'PSU',
+        'SSD',
+        'HDD',
+        'Monitor',
+        'Mouse',
+        'Mouse Pad',
+        'Headset',
+        'Earphone',
+        'Keyboard',
+        'Printer',
+        'CPU Case',
+        'Motherboard'
+      ];
+      return tmp[this.id-1];
+    },
+    currency: 'USD',
+    sell_price: '{{floating(80, 400, 2)}}',
+    profit: '{{integer(1,100)}}',
+    company: '{{company()}}'
+    
+  }
+]
