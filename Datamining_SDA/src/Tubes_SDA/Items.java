@@ -13,10 +13,7 @@ package Tubes_SDA;
  * Tanggal :
  * Deskripsi :
  */
-public class Product {
-    private int id;
-    private String name, currency, company;
-    private double sell_price, profit;
-    
-    
+public class Items {
+    private boolean status;
+    private int product, values;
 }

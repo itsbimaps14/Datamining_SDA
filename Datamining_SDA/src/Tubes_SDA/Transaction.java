@@ -14,5 +14,7 @@ package Tubes_SDA;
  * Deskripsi :
  */
 public class Transaction {
-
+    private String code, name, date, time;
+    private int index;
+    private Items item;
 }
