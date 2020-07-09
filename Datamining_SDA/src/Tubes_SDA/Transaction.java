@@ -14,7 +14,12 @@ package Tubes_SDA;
  * Deskripsi :
  */
 public class Transaction {
-    private String code, name, date, time;
+    private String code, name, date, time, list_item;
     private int index;
     private Items item;
+    
+    public String toString(){
+        return code+". "+name+"\n";
+    }
+   
 }

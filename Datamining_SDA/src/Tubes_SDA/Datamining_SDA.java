@@ -5,6 +5,11 @@
  */
 package Tubes_SDA;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 /**
  *
  * @author Bima
@@ -16,7 +21,15 @@ public class Datamining_SDA {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        // ArrayList<Product> data = gson.fromJson(Product);
         
+        Helper helper = new Helper();
+        
+        // Catatan : Harusnya arraylist returnnya !!!
+        helper.output_product();
+        
+        // Catatan : Harusnya arraylist returnnya !!!
+        //helper.output_transactions();
     }
     
 }
