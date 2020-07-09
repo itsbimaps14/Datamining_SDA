@@ -20,16 +20,17 @@ public class Datamining_SDA {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        // ArrayList<Product> data = gson.fromJson(Product);
+        // Kamus Data
+        ArrayList<Transaction> data_transaction;
+        ArrayList<Product> data_product;
         
         Helper helper = new Helper();
         
-        // Catatan : Harusnya arraylist returnnya !!!
-        helper.output_product();
+        data_product = helper.get_product();
+        data_product.forEach(System.out::println);
         
-        // Catatan : Harusnya arraylist returnnya !!!
-        //helper.output_transactions();
+        data_transaction = helper.get_transaction();
+        data_transaction.forEach(System.out::println);
     }
     
 }

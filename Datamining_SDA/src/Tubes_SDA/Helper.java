@@ -21,36 +21,45 @@ import java.util.ArrayList;
  * Deskripsi :
  */
 public class Helper {
+    // Kamus Data
+    private ArrayList<Transaction> data_trans;
+    private ArrayList<Product> data_product;
     
-   Gson gson = new Gson();
-    
-    public void output_product(){
+    public ArrayList get_product(){    
+        Gson gson = new Gson();
+        
         try (Reader reader = new FileReader("src/Data_JSON/product.json")){
             
             // Convert dari json menjadi list.   
             Type listtype = new TypeToken<ArrayList<Product>>(){}.getType();
-            ArrayList<Product> data = gson.fromJson(reader, listtype);  
+            data_product = gson.fromJson(reader, listtype);  
             
             // Print output data.
-            data.forEach(System.out::println);
+            // data_product.forEach(System.out::println);
 
         }catch (IOException e) {
             e.printStackTrace();
         }
+        
+        return data_product;
     }
     
-    public void output_transactions(){
+    public ArrayList get_transaction(){
+        Gson gson = new Gson();
+        
         try (Reader reader = new FileReader("src/Data_JSON/transaction.json")){
             
             // Convert dari json menjadi list.   
             Type listtype = new TypeToken<ArrayList<Transaction>>(){}.getType();
-            ArrayList<Transaction> data = gson.fromJson(reader, listtype);  
+            data_trans = gson.fromJson(reader, listtype);  
             
             // Print output data.
-            data.forEach(System.out::println);
+            // data_trans.forEach(System.out::println);
 
         }catch (IOException e) {
             e.printStackTrace();
         }
+        
+        return data_trans;
     }
 }

@@ -14,12 +14,12 @@ package Tubes_SDA;
  * Deskripsi :
  */
 public class Transaction {
-    private String code, name, date, time, list_item;
+    private String id, name, date, time, list_item;
     private int index;
-    private Items item;
+    private Items[] item;
     
     public String toString(){
-        return code+". "+name+"\n";
+        return id+". "+name;
     }
    
 }
