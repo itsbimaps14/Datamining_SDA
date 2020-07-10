@@ -6,6 +6,8 @@
 
 package Tubes_SDA;
 
+import java.util.Arrays;
+
 /**
  *
  * Author = Bima Putra S | 191524038 | D4-1B "2019
@@ -19,7 +21,7 @@ public class Transaction {
     private Items[] item;
     
     public String toString(){
-        return id+". "+name;
+        return name + ": " +Arrays.toString(item);
     }
    
 }

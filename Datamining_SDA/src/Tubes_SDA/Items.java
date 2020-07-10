@@ -16,4 +16,9 @@ package Tubes_SDA;
 public class Items {
     private boolean status;
     private int product, values;
+    
+    public String toString()
+    {
+        return product + ": " + status;
+    }
 }

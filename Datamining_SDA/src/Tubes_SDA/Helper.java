@@ -62,4 +62,23 @@ public class Helper {
         
         return data_trans;
     }
+    
+    public ArrayList get_items(){
+        Gson gson = new Gson();
+        
+        try (Reader reader = new FileReader("src/Data_JSON/transaction.json")){
+            
+            // Convert dari json menjadi list.   
+            Type listtype = new TypeToken<ArrayList<Items>>(){}.getType();
+            data_trans = gson.fromJson(reader, listtype);  
+            
+            // Print output data.
+            // data_trans.forEach(System.out::println);
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        return data_trans;
+    }
 }
