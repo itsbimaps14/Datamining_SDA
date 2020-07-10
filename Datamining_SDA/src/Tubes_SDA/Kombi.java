@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Blek
+ * @author Urip
  */
 public class Kombi {
 

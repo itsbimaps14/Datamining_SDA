@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Blek
+ * @author Faza
  */
 public class KombiMain {
 

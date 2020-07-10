@@ -11,6 +11,7 @@ import java.util.Arrays;
 /**
  *
  * Author = Bima Putra S | 191524038 | D4-1B "2019
+ *          M Faza I R | 191524050 | D4-1B'19
  * Politeknik Negeri Bandung
  * Tanggal :
  * Deskripsi :
