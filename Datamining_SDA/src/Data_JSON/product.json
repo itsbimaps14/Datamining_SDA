@@ -3,120 +3,40 @@
     "id": 1,
     "name": "RAM",
     "currency": "USD",
-    "sell_price": 392.66,
-    "profit": 38,
-    "company": "Zentia"
+    "sell_price": 178.17,
+    "profit": 14,
+    "company": "Zepitope"
   },
   {
     "id": 2,
     "name": "VGA",
     "currency": "USD",
-    "sell_price": 123.37,
-    "profit": 81,
-    "company": "Cedward"
+    "sell_price": 173.06,
+    "profit": 33,
+    "company": "Comtrak"
   },
   {
     "id": 3,
     "name": "Processor",
     "currency": "USD",
-    "sell_price": 276.76,
-    "profit": 25,
-    "company": "Kneedles"
+    "sell_price": 143.49,
+    "profit": 52,
+    "company": "Kidgrease"
   },
   {
     "id": 4,
     "name": "PSU",
     "currency": "USD",
-    "sell_price": 174.56,
-    "profit": 57,
-    "company": "Scenty"
+    "sell_price": 298.32,
+    "profit": 67,
+    "company": "Telpod"
   },
   {
     "id": 5,
     "name": "SSD",
     "currency": "USD",
-    "sell_price": 231.45,
-    "profit": 87,
-    "company": "Voipa"
-  },
-  {
-    "id": 6,
-    "name": "HDD",
-    "currency": "USD",
-    "sell_price": 257.93,
-    "profit": 89,
-    "company": "Teraprene"
-  },
-  {
-    "id": 7,
-    "name": "Monitor",
-    "currency": "USD",
-    "sell_price": 94.1,
-    "profit": 48,
-    "company": "Xixan"
-  },
-  {
-    "id": 8,
-    "name": "Mouse",
-    "currency": "USD",
-    "sell_price": 165.44,
-    "profit": 57,
-    "company": "Papricut"
-  },
-  {
-    "id": 9,
-    "name": "Mouse Pad",
-    "currency": "USD",
-    "sell_price": 398.52,
-    "profit": 51,
-    "company": "Realmo"
-  },
-  {
-    "id": 10,
-    "name": "Headset",
-    "currency": "USD",
-    "sell_price": 288.01,
-    "profit": 4,
-    "company": "Billmed"
-  },
-  {
-    "id": 11,
-    "name": "Earphone",
-    "currency": "USD",
-    "sell_price": 194.76,
-    "profit": 87,
-    "company": "Deviltoe"
-  },
-  {
-    "id": 12,
-    "name": "Keyboard",
-    "currency": "USD",
-    "sell_price": 163.6,
-    "profit": 7,
-    "company": "Euron"
-  },
-  {
-    "id": 13,
-    "name": "Printer",
-    "currency": "USD",
-    "sell_price": 299.7,
-    "profit": 99,
-    "company": "Niquent"
-  },
-  {
-    "id": 14,
-    "name": "CPU Case",
-    "currency": "USD",
-    "sell_price": 171.93,
-    "profit": 33,
-    "company": "Xyqag"
-  },
-  {
-    "id": 15,
-    "name": "Motherboard",
-    "currency": "USD",
-    "sell_price": 205.81,
-    "profit": 17,
-    "company": "Panzent"
+    "sell_price": 327.49,
+    "profit": 67,
+    "company": "Lexicondo"
   }
 ]
