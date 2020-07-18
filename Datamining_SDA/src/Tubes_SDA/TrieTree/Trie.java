@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Tubes_SDA.Trie;
+package Tubes_SDA.TrieTree;
+
+import java.util.ArrayList;
 
 /**
  *
@@ -16,17 +18,17 @@ public class Trie {
         root = new TrieNode();
     }
     
-    void insert(String key) 
+    void insert(ArrayList<String> key) 
     { 
         int level; 
-        int length = key.length(); 
+        int length = key.size();
         int index; 
        
         TrieNode pCrawl = root; 
        
         for (level = 0; level < length; level++) 
         { 
-            index = key.charAt(level) - 'a'; 
+            index = key.get(level).charAt(0)-'1';
             if (pCrawl.children[index] == null) 
                 pCrawl.children[index] = new TrieNode(); 
        
@@ -34,19 +36,19 @@ public class Trie {
         } 
        
         // mark last node as leaf 
-        pCrawl.isEndOfWord = true; 
+        pCrawl.isEndOfNumberSet = true; 
     }
     
-    boolean search(String key) 
+    boolean search(ArrayList<String> key) 
     { 
         int level; 
-        int length = key.length(); 
+        int length = key.size(); 
         int index; 
         TrieNode pCrawl = root; 
        
         for (level = 0; level < length; level++) 
         { 
-            index = key.charAt(level) - 'a'; 
+            index = key.get(level).charAt(0)-'1'; 
        
             if (pCrawl.children[index] == null) 
                 return false; 
@@ -54,6 +56,6 @@ public class Trie {
             pCrawl = pCrawl.children[index]; 
         } 
        
-        return (pCrawl != null && pCrawl.isEndOfWord); 
+        return (pCrawl != null && pCrawl.isEndOfNumberSet); 
     } 
 }

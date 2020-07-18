@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Tubes_SDA.Trie;
+package Tubes_SDA.TrieTree;
 
 /**
  *
@@ -11,17 +11,17 @@ package Tubes_SDA.Trie;
  */
 public class TrieNode {
 
-    static final int ALPHABET_SIZE = 26;
-    TrieNode[] children = new TrieNode[ALPHABET_SIZE];
+    static final int NUMBER_SIZE = 10;
+    TrieNode[] children = new TrieNode[NUMBER_SIZE];
 
     // isEndOfWord is true if the node represents 
     // end of a word 
-    boolean isEndOfWord;
+    boolean isEndOfNumberSet;
 
     TrieNode() 
     {
-        isEndOfWord = false;
-        for (int i = 0; i < ALPHABET_SIZE; i++) 
+        isEndOfNumberSet = false;
+        for (int i = 0; i < NUMBER_SIZE; i++) 
         {
             children[i] = null;
         }

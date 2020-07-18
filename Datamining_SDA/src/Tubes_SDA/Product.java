@@ -23,6 +23,10 @@ public class Product {
     }
     
     public String toString(){
-        return id +". "+ name + " - by " +company;
+        return getId() +". "+ name + " - by " +company;
+    }
+
+    public int getId() {
+        return id;
     }
 }
