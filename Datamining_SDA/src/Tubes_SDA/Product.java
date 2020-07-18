@@ -18,6 +18,10 @@ public class Product {
     private String name, currency, company;
     private double sell_price, profit;
     
+    public int getTotalProduct(){
+        return 0;
+    }
+    
     public String toString(){
         return id +". "+ name + " - by " +company;
     }

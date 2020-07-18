@@ -21,8 +21,10 @@ public class KombiMain {
         Helper helper = new Helper();
         
         Kombi kombi = new Kombi();
-        ArrayList<ArrayList<String>> hasil = kombi.generate(3);
+        ArrayList<ArrayList<String>> hasil = kombi.generate(5);
         //ArrayList<ArrayList<Product>> hasil = kombi.generate(helper.get_product());
+        
+        hasil.forEach(System.out::println);
     }
     
 }

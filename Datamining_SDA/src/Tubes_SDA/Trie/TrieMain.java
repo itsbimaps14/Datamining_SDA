@@ -33,9 +33,9 @@ public class TrieMain {
             System.out.println("the --- " + output[1]); 
         else System.out.println("the --- " + output[0]); 
           
-        if(root.search("these") == true) 
-            System.out.println("these --- " + output[1]); 
-        else System.out.println("these --- " + output[0]); 
+        if(root.search("ther") == true) 
+            System.out.println("ther --- " + output[1]); 
+        else System.out.println("ther --- " + output[0]); 
           
         if(root.search("their") == true) 
             System.out.println("their --- " + output[1]); 

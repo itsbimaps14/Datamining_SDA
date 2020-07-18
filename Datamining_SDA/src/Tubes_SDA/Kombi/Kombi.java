@@ -57,22 +57,39 @@ public class Kombi {
         for (int r = 1; r <= n; r++) {
             column[0] = 0;
             combinations(1, r, n);
-            System.out.printf("\nke=%d", r);
+            //System.out.printf("\nke=%d", r);
         }
-        System.out.print("\n\nHASIL:");
-        for (int i = 0; i < ndxs.size(); i++) {
+        //System.out.print("\n\nHASIL:");
+        /*for (int i = 0; i < ndxs.size(); i++) {
             ndx = ndxs.get(i);
-            System.out.print("\t\tUkuran ndxs[" + i + "]=" + ndx.size());
-            System.out.print("\n\t{");
-            for (int j = 0; j < ndx.size(); j++) {
+            //System.out.print("\t\tUkuran ndxs[" + i + "]=" + ndx.size());
+            //System.out.print("\n\t{");
+            /*for (int j = 0; j < ndx.size(); j++) {
                 if (j > 0) {
-                    System.out.print("," + ndx.get(j));
+                    System.out.print("-" + ndx.get(j));
                 } else {
                     System.out.print(ndx.get(j));
                 }
             }
-            System.out.print("}");
-        }
+            System.out.print("\n");
+        }*/
         return ndxs;
+    }
+    
+        
+    public String toString(){
+        String tmp = null;
+        
+        for (int i = 0; i < ndxs.size(); i++) {
+            ndx = ndxs.get(i);
+            //System.out.print("\t\tUkuran ndxs[" + i + "]=" + ndx.size());
+            //System.out.print("\n\t{");
+            for (int j = 0; j < ndx.size(); j++) {
+                tmp += ndx.get(j);
+            }
+            tmp += "\n";
+        }
+        
+        return tmp;
     }
 }
