@@ -19,6 +19,10 @@ public class Product {
     private double sell_price, profit;
     
     public String toString(){
-        return id +". "+ name + " - by " +company;
+        return getId() +". "+ name + " - by " +company;
+    }
+
+    public int getId() {
+        return id;
     }
 }

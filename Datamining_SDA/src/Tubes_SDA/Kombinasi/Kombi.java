@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Tubes_SDA.Kombi;
+package Tubes_SDA.Kombinasi;
 
 import java.util.ArrayList;
 
