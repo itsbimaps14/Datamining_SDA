@@ -9,6 +9,7 @@ package Tubes_SDA;
 /**
  *
  * @author Sumit Ghosh - GFG
+ * Modified by: Bima & Faza
  */
 public class TrieNode {
 

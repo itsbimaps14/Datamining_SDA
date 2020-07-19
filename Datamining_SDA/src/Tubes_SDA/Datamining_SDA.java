@@ -6,17 +6,17 @@
 package Tubes_SDA;
 
 import Tubes_SDA.Kombinasi.Kombi;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
  *
- * @author Bima
+ * Author = Bima Putra S | 191524038 | D4-1B "2019
+ *          M Faza I R | 191524050 | D4-1B'19
+ * Politeknik Negeri Bandung
+ * Tanggal :
+ * Deskripsi :
  */
 public class Datamining_SDA {
 
@@ -26,8 +26,6 @@ public class Datamining_SDA {
     public static void main(String[] args) {
         // Kamus Data
         ArrayList<Transaction> data_transaction;
-        ArrayList<Product> data_product;
-        String tmp;
         ArrayList list = new ArrayList<String>();
         ArrayList<ArrayList<String>> hasil;
         
@@ -42,7 +40,7 @@ public class Datamining_SDA {
         // Construct trie 
         int i,j; 
         for (i = 0; i < hasil.size() ; i++){
-            root.insert(hasil.get(i));
+            root.Insert(hasil.get(i));
         }
         
         // Transform dari String -> ArrayList
@@ -54,24 +52,22 @@ public class Datamining_SDA {
             }
         });
         
+        // Search tiap key pada transaksi, generate kombinasi, lalu hitung support dari setiap key
         for(i = 0; i < list.size(); i++){
             ArrayList<String> data = helper.konversiObjString(String.valueOf(list.get(i)));
-            if(root.search(data) == true){
+            if(root.Search(data) == true){
                 // Bima : Check data update support tiap search !~
                 // System.out.println(list.get(i) + output[1] + " Support: " + root.getSupport(data));
                 
                 List<List<String>> powerSet = new LinkedList<List<String>>();
                 
                 String[] arr = data.toArray(new String[0]);
-                //System.out.println(arr.length);
                 for (int x = 1; x <= arr.length; x++){
                     powerSet.addAll(helper.combination(data, x));
                 }
                 
                 powerSet.forEach(n -> {
-                    if(root.search(helper.konversiObjString(String.valueOf(n)))){
-                        //donothing
-                    }
+                    root.CountSupport(helper.konversiObjString(String.valueOf(n)));                   
                 });
             }
             else System.out.println(list.get(i) + output[0]); 
@@ -82,10 +78,10 @@ public class Datamining_SDA {
             root.PrintAllDataSupport(hasil.get(j));
         }
         
-        int treeshold = data_transaction.size() / 5;
-        System.out.println("\nHIMPUNAN DIATAS THRESHOLD( > "+treeshold+"):");
+        int threshold = data_transaction.size() / 5;
+        System.out.println("\nHIMPUNAN DIATAS THRESHOLD( > "+threshold+"):");
         for(j = 0; j < hasil.size(); j++){
-            root.PrintPassedThreshold(hasil.get(j),treeshold);
+            root.PrintPassedThreshold(hasil.get(j),threshold);
         }
 
     }

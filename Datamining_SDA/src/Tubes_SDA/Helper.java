@@ -9,7 +9,6 @@ package Tubes_SDA;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.io.*;
-import static java.lang.Integer.parseInt;
 import java.util.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -27,7 +26,6 @@ public class Helper {
     // Kamus Data
     private ArrayList<Transaction> data_trans;
     private ArrayList<Product> data_product;
-    private ArrayList<String> data_trans_item;
     
     Map<Integer, Integer> Mapping_Support = new HashMap<Integer, Integer>();
     
