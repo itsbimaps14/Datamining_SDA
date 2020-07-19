@@ -57,7 +57,8 @@ public class Datamining_SDA {
         for(i = 0; i < list.size(); i++){
             ArrayList<String> data = helper.konversiObjString(String.valueOf(list.get(i)));
             if(root.search(data) == true){
-                System.out.println(list.get(i) + output[1] + " Support: " + root.getSupport(data));
+                // Bima : Check data update support tiap search !~
+                // System.out.println(list.get(i) + output[1] + " Support: " + root.getSupport(data));
                 
                 List<List<String>> powerSet = new LinkedList<List<String>>();
                 
@@ -76,26 +77,15 @@ public class Datamining_SDA {
             else System.out.println(list.get(i) + output[0]); 
         }
         
-<<<<<<< HEAD
-        // Buat Hashmap
-        // helper.CreateMappingSupport(root);
-        System.out.println("\nHIMPUNAN DIATAS THRESHOLD(> 9):");
-        for(j = 0; j < hasil.size(); j++){
-=======
         System.out.println("\nSUPPORT TIAP HIMPUNAN:");
-        for(j = 0; j < hasil.size(); j++)
-        {
-            if (root.search(hasil.get(j)) == true)
-                System.out.println(hasil.get(j) + output[1] + ", support: " + root.getSupport(hasil.get(j)));
-            else
-                System.out.println(hasil.get(j) + output[0]);
+        for(j = 0; j < hasil.size(); j++){
+            root.PrintAllDataSupport(hasil.get(j));
         }
         
-        System.out.println("\nHIMPUNAN DIATAS THRESHOLD(> 9):");
-        for(j = 0; j < hasil.size(); j++)
-        {
->>>>>>> 03e0c8f1ea9f999d0cef943d6bff98b42c23f9f7
-            root.PrintPassedThreshold(hasil.get(j));
+        int treeshold = data_transaction.size() / 5;
+        System.out.println("\nHIMPUNAN DIATAS THRESHOLD( > "+treeshold+"):");
+        for(j = 0; j < hasil.size(); j++){
+            root.PrintPassedThreshold(hasil.get(j),treeshold);
         }
 
     }
