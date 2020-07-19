@@ -19,7 +19,7 @@ public class TrieMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {      
-        String output[] = {"Not present in trie", "Present in trie"};
+        String output[] = {" Not present in trie", " Present in trie"};
         
         Helper helper = new Helper();       
         Kombi kombi = new Kombi();
@@ -39,23 +39,14 @@ public class TrieMain {
         }
             
        
-        // Search for different keys 
-        if(root.search(hasil.get(0)) == true) 
-            System.out.println(hasil.get(0) + output[1]); 
-        else System.out.println("the --- " + output[0]); 
-          
-        if(root.search(hasil.get(1)) == true) 
-            System.out.println(hasil.get(1) + output[1]); 
-        else System.out.println("these --- " + output[0]); 
-          
-        if(root.search(hasil.get(12)) == true) 
-            System.out.println(hasil.get(12) + output[1]); 
-        else System.out.println("their --- " + output[0]); 
-          
-        if(root.search(hasil.get(30)) == true) 
-            System.out.println(hasil.get(30) + output[1]); 
-        else System.out.println("thaw --- " + output[0]); 
-         
+        // Search for different keys
+        for(j = 0; j < hasil.size(); j++)
+        {
+            if (root.search(hasil.get(j)) == true)
+                System.out.println(hasil.get(j) + output[1]);
+            else
+                System.out.println(hasil.get(j) + output[0]);
+        }        
     }
     
 }

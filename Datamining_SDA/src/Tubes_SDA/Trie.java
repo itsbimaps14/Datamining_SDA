@@ -55,7 +55,48 @@ public class Trie {
        
             pCrawl = pCrawl.children[index]; 
         } 
-       
+        
+        pCrawl.support++;
         return (pCrawl != null && pCrawl.isEndOfNumberSet); 
-    } 
+    }
+    
+    int getSupport(ArrayList<String> key)
+    {
+        int level; 
+        int length = key.size(); 
+        int index; 
+        TrieNode pCrawl = root; 
+       
+        for (level = 0; level < length; level++) 
+        { 
+            index = key.get(level).charAt(0)-'1'; 
+       
+            if (pCrawl.children[index] == null) 
+                return 0;
+       
+            pCrawl = pCrawl.children[index]; 
+        } 
+        
+        return (pCrawl.support); 
+    }
+    
+    void PrintPassedThreshold (ArrayList<String> key)
+    {
+        int level; 
+        int length = key.size(); 
+        int index; 
+        TrieNode pCrawl = root; 
+       
+        for (level = 0; level < length; level++) 
+        { 
+            index = key.get(level).charAt(0)-'1'; 
+            if (pCrawl.children[index] == null)
+                System.out.println("NULL");
+            else if (pCrawl.support >= 8) {
+                System.out.println(key);
+            }
+            pCrawl = pCrawl.children[index]; 
+        } 
+    }
+    
 }

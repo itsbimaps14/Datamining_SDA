@@ -29,7 +29,7 @@ public class Datamining_SDA {
         String tmp;
         ArrayList list = new ArrayList<String>();
         ArrayList<ArrayList<String>> hasil;
-        String output[] = {"Not present in trie", "Present in trie"};
+        String output[] = {" Not present in trie", " Present in trie"};
         
         Helper helper = new Helper();
         Trie root = new Trie();
@@ -53,8 +53,13 @@ public class Datamining_SDA {
         
         for(i = 0; i < list.size(); i++){
             if(root.search(helper.konversiObjString(String.valueOf(list.get(i)))) == true) 
-                System.out.println(list.get(i) + output[1]); 
-            else System.out.println("the --- " + output[0]); 
+                System.out.println(list.get(i) + output[1] + " Support: " + root.getSupport(helper.konversiObjString(String.valueOf(list.get(i))))); 
+            else System.out.println(list.get(i) + output[0]); 
+        }
+        
+        System.out.println("\nHIMPUNAN DIATAS THRESHOLD(>=8):");
+        for (i = 0; i < hasil.size() ; i++){
+            root.PrintPassedThreshold(hasil.get(i));
         }
     }
 }

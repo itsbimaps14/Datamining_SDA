@@ -18,9 +18,11 @@ public class TrieNode {
     // isEndOfWord is true if the node represents 
     // end of a word 
     boolean isEndOfNumberSet;
+    int support;
 
     TrieNode() 
     {
+        support = 0;
         isEndOfNumberSet = false;
         for (int i = 0; i < NUMBER_SIZE; i++) 
         {
