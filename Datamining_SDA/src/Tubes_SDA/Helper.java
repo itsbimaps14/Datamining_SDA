@@ -42,9 +42,6 @@ public class Helper {
             // Convert dari json menjadi list.   
             Type listtype = new TypeToken<ArrayList<Product>>(){}.getType();
             data_product = gson.fromJson(reader, listtype);  
-            
-            // Print output data.
-            // data_product.forEach(System.out::println);
 
         }catch (IOException e) {
             e.printStackTrace();
@@ -61,9 +58,6 @@ public class Helper {
             // Convert dari json menjadi list.   
             Type listtype = new TypeToken<ArrayList<Transaction>>(){}.getType();
             data_trans = gson.fromJson(reader, listtype);  
-            
-            // Print output data.
-            // data_trans.forEach(System.out::println);
 
         }catch (IOException e) {
             e.printStackTrace();
@@ -79,10 +73,7 @@ public class Helper {
             
             // Convert dari json menjadi list.   
             Type listtype = new TypeToken<ArrayList<Items>>(){}.getType();
-            data_trans = gson.fromJson(reader, listtype);  
-            
-            // Print output data.
-            // data_trans.forEach(System.out::println);
+            data_trans = gson.fromJson(reader, listtype);             
 
         }catch (IOException e) {
             e.printStackTrace();
@@ -162,8 +153,6 @@ public class Helper {
         return tmp;
     }
     
-
-    
     public void pilihanMenu(int choice, ArrayList hasil, Trie root){
         t_Obj = root;
         switch(choice){
@@ -174,16 +163,23 @@ public class Helper {
                 ch2_showTransactions();
                 break;
             case 3:
-                System.out.println("3");
+                System.out.println("In Development");
                 break;
             case 4:
-                System.out.println("4");
+                System.out.println("In Development");
                 break;
             case 5:
                 ch5_productRecomBundle(hasil);
                 break;
         }
     }
+    public void ch1_showProduct() {
+        System.out.println("\n-- List Product : ");
+        data_product.forEach(n -> {
+            System.out.println("\t" + n.toString());
+        });
+    }
+    
     public void ch2_showTransactions() {
         ArrayList list = new ArrayList<String>();
         ArrayList<Transaction> data_transaction = get_transaction();
@@ -213,43 +209,14 @@ public class Helper {
             if(ukuran == data.size() && convert && ukuran != 1 && t_Obj.getSupport(data) > (get_transaction().size() / 5)+10){
                 System.out.println(hasil.get(j).toString());
             }
-            else{
-                //OutputHighHashMap(Data_Support);
-                //Data_Support.clear();
-            }
         }
     }
-    
-    public void ch1_showProduct(){
-        System.out.println("\n-- List Product : ");
-        data_product.forEach(n -> {
-            System.out.println("\t"+n.toString());
-        });
-    }
-    
+      
     public void ch5_productRecomBundle(ArrayList hasil){
         ch1_showProduct();
         int choice = getInput();
         pilihanCh5(choice, hasil);
     }
-//    public void CreateMappingSupport(ArrayList hasil){
-//        hasil.forEach(n -> {
-//            Mapping_Support.put(parseInt(konversiStringKey(String.valueOf(n))), 0);
-//        });
-//        SortHashMap();
-//    }
-//    
-//    public void SortHashMap(Map hashMap){
-//        // TreeMap to store values of HashMap 
-//        TreeMap<Integer, Integer> sorted = new TreeMap<>(); 
-//  
-//        // Copy all data from hashMap into TreeMap 
-//        sorted.putAll(hashMap); 
-//  
-//        // Display the TreeMap which is naturally sorted 
-//        for (Map.Entry<Integer, Integer> entry : sorted.entrySet())  
-//            System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
-//    }
     
     public void OutputHighHashMap(Map hashMap){
         // TreeMap to store values of HashMap 
