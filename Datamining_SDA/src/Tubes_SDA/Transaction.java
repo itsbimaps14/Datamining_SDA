@@ -6,6 +6,7 @@
 
 package Tubes_SDA;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -19,10 +20,18 @@ import java.util.Arrays;
 public class Transaction {
     private String id, name, date, time, list_item;
     private int index;
-    private Items[] item;
+    private ArrayList<Items> item;
+    
+    public void removeFalseItem(){
+        for(int x = item.size() - 1; x >= 0; x--){
+            if(!item.get(x).getStatus()){
+                item.remove(x);
+            }
+        }
+    }
     
     public String toString(){
-        return name + ": " +Arrays.toString(item);
-    }
-   
+        removeFalseItem();
+        return item.toString();
+    }  
 }

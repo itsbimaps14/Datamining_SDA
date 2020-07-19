@@ -12,6 +12,7 @@ import java.io.*;
 import java.util.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -25,6 +26,7 @@ public class Helper {
     // Kamus Data
     private ArrayList<Transaction> data_trans;
     private ArrayList<Product> data_product;
+    private ArrayList<String> data_trans_item;
     
     public ArrayList get_product(){    
         Gson gson = new Gson();

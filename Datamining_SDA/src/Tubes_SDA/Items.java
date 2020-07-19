@@ -18,8 +18,11 @@ public class Items {
     private boolean status;
     private int product, values;
     
-    public String toString()
-    {
-        return product + ": " + status;
+    public boolean getStatus(){
+        return status;
+    }
+    
+    public String toString(){
+        return Integer.toString(product);
     }
 }
