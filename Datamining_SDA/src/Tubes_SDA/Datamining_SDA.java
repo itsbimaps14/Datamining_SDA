@@ -76,7 +76,7 @@ public class Datamining_SDA {
         do{
             helper.MenuMain();
             choice = helper.getInput();
-            helper.pilihanMenu(choice);
+            helper.pilihanMenu(choice, hasil, root);
             System.out.println();
         }while(choice != 6);
         

@@ -28,7 +28,11 @@ public class Helper {
     private ArrayList<Transaction> data_trans;
     private ArrayList<Product> data_product;
     
-    Map<Integer, Integer> Mapping_Support = new HashMap<Integer, Integer>();
+    // Map<Integer, Integer> Mapping_Support = new HashMap<Integer, Integer>();
+    Map<String, Integer> Data_Support = new HashMap<String, Integer>();
+    
+    // Object
+    Trie t_Obj;
     
     public ArrayList get_product(){    
         Gson gson = new Gson();
@@ -137,7 +141,7 @@ public class Helper {
     }
     
     public void MenuMain(){
-        System.out.println("-- Main Menu\n"
+        System.out.println("** Main Menu\n"
                 + "\t1. Show Product\n"
                 + "\t2. Show Transaction\n"
                 + "\t3. Best Seller Product\n"
@@ -152,16 +156,17 @@ public class Helper {
         // Object Initialize
         Scanner scanner = new Scanner(System.in);
         
-        System.out.print("##Pilihan : ");
+        System.out.print("## Pilihan : ");
         tmp = parseInt(scanner.nextLine());
         
         return tmp;
     }
     
-    public void pilihanMenu(int choice){
+    public void pilihanMenu(int choice, ArrayList hasil, Trie root){
+        t_Obj = root;
         switch(choice){
             case 1:
-                System.out.println("1");
+                ch1_showProduct();
                 break;
             case 2:
                 System.out.println("2");
@@ -173,9 +178,43 @@ public class Helper {
                 System.out.println("4");
                 break;
             case 5:
-                System.out.println("5");
+                ch5_productRecomBundle(hasil);
                 break;
         }
+    }
+    
+    public void pilihanCh5(int choice, ArrayList hasil){
+        String pilihan = Integer.toString(choice);
+        for(int j = 0; j < hasil.size(); j++){
+            
+            ArrayList data = (ArrayList) hasil.get(j);
+            boolean convert = konversiStringKey(String.valueOf(hasil.get(j))).contains(pilihan);
+            int ukuran = data.size();
+            Data_Support.put(hasil.get(j).toString(), t_Obj.getSupport(data));
+            
+            if(ukuran == data.size() && convert && ukuran != 1){
+                System.out.println(hasil.get(j).toString() +"-"+ t_Obj.getSupport(data));
+                System.out.println(Data_Support);
+                //if(Data_Support.)
+            }
+            else{
+                //OutputHighHashMap(Data_Support);
+                //Data_Support.clear();
+            }
+        }
+    }
+    
+    public void ch1_showProduct(){
+        System.out.println("\n-- List Product : ");
+        data_product.forEach(n -> {
+            System.out.println("\t"+n.toString());
+        });
+    }
+    
+    public void ch5_productRecomBundle(ArrayList hasil){
+        ch1_showProduct();
+        int choice = getInput();
+        pilihanCh5(choice, hasil);
     }
 //    public void CreateMappingSupport(ArrayList hasil){
 //        hasil.forEach(n -> {
@@ -184,15 +223,30 @@ public class Helper {
 //        SortHashMap();
 //    }
 //    
-//    public void SortHashMap(){
+//    public void SortHashMap(Map hashMap){
 //        // TreeMap to store values of HashMap 
 //        TreeMap<Integer, Integer> sorted = new TreeMap<>(); 
 //  
 //        // Copy all data from hashMap into TreeMap 
-//        sorted.putAll(Mapping_Support); 
+//        sorted.putAll(hashMap); 
 //  
 //        // Display the TreeMap which is naturally sorted 
 //        for (Map.Entry<Integer, Integer> entry : sorted.entrySet())  
 //            System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
 //    }
+    
+    public void OutputHighHashMap(Map hashMap){
+        // TreeMap to store values of HashMap 
+        TreeMap<String, Integer> sorted = new TreeMap<>(); 
+  
+        // Copy all data from hashMap into TreeMap 
+        sorted.putAll(hashMap); 
+  
+        // Display the TreeMap which is naturally sorted 
+        for (Map.Entry<String, Integer> entry : sorted.entrySet()){
+            System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+            break;
+        }
+    }
 }
+
