@@ -210,7 +210,7 @@ public class Helper {
             Data_Support.put(hasil.get(j).toString(), t_Obj.getSupport(data));
             
 
-            if(ukuran == data.size() && convert && ukuran != 1 && t_Obj.getSupport(data) > get_transaction().size() / 5){
+            if(ukuran == data.size() && convert && ukuran != 1 && t_Obj.getSupport(data) > (get_transaction().size() / 5)+10){
                 System.out.println(hasil.get(j).toString());
             }
             else{
