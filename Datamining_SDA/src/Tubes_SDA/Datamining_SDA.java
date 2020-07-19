@@ -57,9 +57,19 @@ public class Datamining_SDA {
             else System.out.println(list.get(i) + output[0]); 
         }
         
-        System.out.println("\nHIMPUNAN DIATAS THRESHOLD(>=8):");
-        for (i = 0; i < hasil.size() ; i++){
-            root.PrintPassedThreshold(hasil.get(i));
+        System.out.println("\nSUPPORT TIAP HIMPUNAN:");
+        for(j = 0; j < hasil.size(); j++)
+        {
+            if (root.search(hasil.get(j)) == true)
+                System.out.println(hasil.get(j) + output[1] + ", support: " + root.getSupport(hasil.get(j)));
+            else
+                System.out.println(hasil.get(j) + output[0]);
+        }
+        
+        System.out.println("\nHIMPUNAN DIATAS THRESHOLD(> 9):");
+        for(j = 0; j < hasil.size(); j++)
+        {
+            root.PrintPassedThreshold(hasil.get(j));
         }
     }
 }

@@ -92,11 +92,10 @@ public class Trie {
             index = key.get(level).charAt(0)-'1'; 
             if (pCrawl.children[index] == null)
                 System.out.println("NULL");
-            else if (pCrawl.support >= 8) {
-                System.out.println(key);
-            }
             pCrawl = pCrawl.children[index]; 
-        } 
+        }
+        if(pCrawl.support > 9)
+            System.out.println(key);
     }
     
 }
