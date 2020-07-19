@@ -37,5 +37,10 @@ public class Transaction {
     
     public String toString(){
         return item.toString();
-    }  
+    }
+    
+    public String display(){
+        removeFalseItem();
+        return "Name: " + name + "\nDate:" + date + "\nItems: " + item + "\n";
+    }
 }

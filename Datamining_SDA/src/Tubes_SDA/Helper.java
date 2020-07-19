@@ -158,13 +158,26 @@ public class Helper {
         return tmp;
     }
     
+    public void PrintTransactions(){
+        ArrayList list = new ArrayList<String>();
+        ArrayList<Transaction> data_transaction = get_transaction();
+        data_transaction.forEach(n -> {
+            n.removeFalseItem();
+            if (n.toString() != "[]") {
+                list.add(n.toString());
+            }
+        });
+        for (int i = 0; i < data_transaction.size(); i++)
+            System.out.println(data_transaction.get(i).display());
+    }
+    
     public void pilihanMenu(int choice){
         switch(choice){
             case 1:
                 System.out.println("1");
                 break;
             case 2:
-                System.out.println("2");
+                PrintTransactions();
                 break;
             case 3:
                 System.out.println("3");
