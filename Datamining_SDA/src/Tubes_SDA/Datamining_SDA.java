@@ -10,6 +10,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -24,8 +26,9 @@ public class Datamining_SDA {
         // Kamus Data
         ArrayList<Transaction> data_transaction;
         ArrayList<Product> data_product;
-        ArrayList list = new ArrayList();
-        ArrayList<ArrayList<String>> hasil, data;
+        String tmp;
+        ArrayList list = new ArrayList<String>();
+        ArrayList<ArrayList<String>> hasil;
         String output[] = {"Not present in trie", "Present in trie"};
         
         Helper helper = new Helper();
@@ -42,15 +45,16 @@ public class Datamining_SDA {
         
         data_transaction = helper.get_transaction();
         data_transaction.forEach(n -> {
-            list.add(n.toString());
+            n.removeFalseItem();
+            if(n.toString() != "[]"){
+                list.add(n.toString());
+            }
         });
         
-        data = new ArrayList<ArrayList<String>>();
-        data.add(list);
-        
-        // Masih Salah - Array di dalam arraynya 1x aja buat data !
-        System.out.println(list);
-        System.out.println(data);
-
+        for(i = 0; i < list.size(); i++){
+            if(root.search(helper.konversiObjString(String.valueOf(list.get(i)))) == true) 
+                System.out.println(list.get(i) + output[1]); 
+            else System.out.println("the --- " + output[0]); 
+        }
     }
 }

@@ -84,4 +84,14 @@ public class Helper {
         
         return data_trans;
     }
+    
+    public ArrayList konversiObjString(String tmp){
+        ArrayList myList;
+        
+        tmp = tmp.replace("[", "");
+        tmp = tmp.replace("]", "");
+        tmp = tmp.replace(" ", "");
+        
+        return myList = new ArrayList<String>(Arrays.asList(tmp.split(",")));
+    }
 }

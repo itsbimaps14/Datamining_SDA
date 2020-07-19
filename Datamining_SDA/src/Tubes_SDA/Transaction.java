@@ -21,6 +21,7 @@ public class Transaction {
     private String id, name, date, time, list_item;
     private int index;
     private ArrayList<Items> item;
+    private ArrayList<String> data = new ArrayList<String>();
     
     public void removeFalseItem(){
         for(int x = item.size() - 1; x >= 0; x--){
@@ -30,8 +31,12 @@ public class Transaction {
         }
     }
     
+    public ArrayList<String> getData(){
+        data.add(item.toString());
+        return data;
+    }
+    
     public String toString(){
-        removeFalseItem();
         return item.toString();
     }  
 }
