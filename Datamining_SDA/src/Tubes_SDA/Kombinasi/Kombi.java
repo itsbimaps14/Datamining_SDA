@@ -31,16 +31,10 @@ public class Kombi {
             if (k < r) {
                 combinations(k + 1, r, n);
             } else {
-// System.out.print("\n{");
                 ndx = new ArrayList<String>();
                 for (int j = 1; j <= r; j++) {
-// System.out.print(column[j]);
                     ndx.add(String.valueOf(column[j]));
-// if(j!=r)
-// System.out.print(",");
-
                 }
-// System.out.print("}");
                 ke++;
                 ndxs.add(ke, ndx);
                 ndx = ndxs.get(ke);

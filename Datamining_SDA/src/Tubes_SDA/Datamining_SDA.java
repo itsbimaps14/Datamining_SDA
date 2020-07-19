@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -29,6 +30,7 @@ public class Datamining_SDA {
         String tmp;
         ArrayList list = new ArrayList<String>();
         ArrayList<ArrayList<String>> hasil;
+        
         String output[] = {" Not present in trie", " Present in trie"};
         
         Helper helper = new Helper();
@@ -43,6 +45,7 @@ public class Datamining_SDA {
             root.insert(hasil.get(i));
         }
         
+        // Transform dari String -> ArrayList
         data_transaction = helper.get_transaction();
         data_transaction.forEach(n -> {
             n.removeFalseItem();
@@ -52,14 +55,48 @@ public class Datamining_SDA {
         });
         
         for(i = 0; i < list.size(); i++){
-            if(root.search(helper.konversiObjString(String.valueOf(list.get(i)))) == true) 
-                System.out.println(list.get(i) + output[1] + " Support: " + root.getSupport(helper.konversiObjString(String.valueOf(list.get(i))))); 
+            ArrayList<String> data = helper.konversiObjString(String.valueOf(list.get(i)));
+            if(root.search(data) == true){
+                System.out.println(list.get(i) + output[1] + " Support: " + root.getSupport(data));
+                
+                List<List<String>> powerSet = new LinkedList<List<String>>();
+                
+                String[] arr = data.toArray(new String[0]);
+                //System.out.println(arr.length);
+                for (int x = 1; x <= arr.length; x++){
+                    powerSet.addAll(helper.combination(data, x));
+                }
+                
+                powerSet.forEach(n -> {
+                    if(root.search(helper.konversiObjString(String.valueOf(n)))){
+                        //donothing
+                    }
+                });
+            }
             else System.out.println(list.get(i) + output[0]); 
         }
         
-        System.out.println("\nHIMPUNAN DIATAS THRESHOLD(>=8):");
-        for (i = 0; i < hasil.size() ; i++){
-            root.PrintPassedThreshold(hasil.get(i));
+<<<<<<< HEAD
+        // Buat Hashmap
+        // helper.CreateMappingSupport(root);
+        System.out.println("\nHIMPUNAN DIATAS THRESHOLD(> 9):");
+        for(j = 0; j < hasil.size(); j++){
+=======
+        System.out.println("\nSUPPORT TIAP HIMPUNAN:");
+        for(j = 0; j < hasil.size(); j++)
+        {
+            if (root.search(hasil.get(j)) == true)
+                System.out.println(hasil.get(j) + output[1] + ", support: " + root.getSupport(hasil.get(j)));
+            else
+                System.out.println(hasil.get(j) + output[0]);
         }
+        
+        System.out.println("\nHIMPUNAN DIATAS THRESHOLD(> 9):");
+        for(j = 0; j < hasil.size(); j++)
+        {
+>>>>>>> 03e0c8f1ea9f999d0cef943d6bff98b42c23f9f7
+            root.PrintPassedThreshold(hasil.get(j));
+        }
+
     }
 }

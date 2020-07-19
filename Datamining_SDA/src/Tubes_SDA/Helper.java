@@ -9,6 +9,7 @@ package Tubes_SDA;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.io.*;
+import static java.lang.Integer.parseInt;
 import java.util.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -27,6 +28,8 @@ public class Helper {
     private ArrayList<Transaction> data_trans;
     private ArrayList<Product> data_product;
     private ArrayList<String> data_trans_item;
+    
+    Map<Integer, Integer> Mapping_Support = new HashMap<Integer, Integer>();
     
     public ArrayList get_product(){    
         Gson gson = new Gson();
@@ -87,11 +90,69 @@ public class Helper {
     
     public ArrayList konversiObjString(String tmp){
         ArrayList myList;
-        
+        tmp = konversiStringAL(tmp);
+        return myList = new ArrayList<String>(Arrays.asList(tmp.split(",")));
+    }
+    
+    public String konversiStringAL(String tmp){
         tmp = tmp.replace("[", "");
         tmp = tmp.replace("]", "");
         tmp = tmp.replace(" ", "");
-        
-        return myList = new ArrayList<String>(Arrays.asList(tmp.split(",")));
+        return tmp;
     }
+    
+    public String konversiStringKey(String tmp){
+        tmp = konversiStringAL(tmp);
+        tmp = tmp.replace(",", "");
+        return tmp;
+    }
+    
+    public static <T> List<List<T>> combination(List<T> values, int size) {
+
+        if (0 == size) {
+            return Collections.singletonList(Collections.<T> emptyList());
+        }
+
+        if (values.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        List<List<T>> combination = new LinkedList<List<T>>();
+
+        T actual = values.iterator().next();
+
+        List<T> subSet = new LinkedList<T>(values);
+        subSet.remove(actual);
+
+        List<List<T>> subSetCombination = combination(subSet, size - 1);
+
+        for (List<T> set : subSetCombination) {
+            List<T> newSet = new LinkedList<T>(set);
+            newSet.add(0, actual);
+            combination.add(newSet);
+        }
+
+        combination.addAll(combination(subSet, size));
+
+        return combination;
+    }
+    
+//    public void CreateMappingSupport(ArrayList hasil){
+//        hasil.forEach(n -> {
+//            Mapping_Support.put(parseInt(konversiStringKey(String.valueOf(n))), 0);
+//        });
+//        SortHashMap();
+//    }
+//    
+//    public void SortHashMap(){
+//        // TreeMap to store values of HashMap 
+//        TreeMap<Integer, Integer> sorted = new TreeMap<>(); 
+//  
+//        // Copy all data from hashMap into TreeMap 
+//        sorted.putAll(Mapping_Support); 
+//  
+//        // Display the TreeMap which is naturally sorted 
+//        for (Map.Entry<Integer, Integer> entry : sorted.entrySet())  
+//            System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+//    }
 }

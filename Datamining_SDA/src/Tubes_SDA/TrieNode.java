@@ -19,7 +19,11 @@ public class TrieNode {
     // end of a word 
     boolean isEndOfNumberSet;
     int support;
-
+    
+    public int getSupport(){
+        return support;
+    }
+    
     TrieNode() 
     {
         support = 0;

@@ -80,23 +80,25 @@ public class Trie {
         return (pCrawl.support); 
     }
     
-    void PrintPassedThreshold (ArrayList<String> key)
-    {
+    void PrintPassedThreshold (ArrayList<String> key){
         int level; 
         int length = key.size(); 
         int index; 
         TrieNode pCrawl = root; 
        
-        for (level = 0; level < length; level++) 
-        { 
+        for (level = 0; level < length; level++){ 
             index = key.get(level).charAt(0)-'1'; 
             if (pCrawl.children[index] == null)
                 System.out.println("NULL");
-            else if (pCrawl.support >= 8) {
-                System.out.println(key);
-            }
             pCrawl = pCrawl.children[index]; 
-        } 
+        }
+<<<<<<< HEAD
+        
+        if(pCrawl.support > 9)
+            System.out.println(key + " Dengan Support = " + pCrawl.support);
+=======
+        if(pCrawl.support > 9)
+            System.out.println(key);
+>>>>>>> 03e0c8f1ea9f999d0cef943d6bff98b42c23f9f7
     }
-    
 }
