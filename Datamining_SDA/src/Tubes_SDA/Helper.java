@@ -162,18 +162,7 @@ public class Helper {
         return tmp;
     }
     
-    public void PrintTransactions(){
-        ArrayList list = new ArrayList<String>();
-        ArrayList<Transaction> data_transaction = get_transaction();
-        data_transaction.forEach(n -> {
-            n.removeFalseItem();
-            if (n.toString() != "[]") {
-                list.add(n.toString());
-            }
-        });
-        for (int i = 0; i < data_transaction.size(); i++)
-            System.out.println(data_transaction.get(i).display());
-    }
+
     
     public void pilihanMenu(int choice, ArrayList hasil, Trie root){
         t_Obj = root;
@@ -182,7 +171,7 @@ public class Helper {
                 ch1_showProduct();
                 break;
             case 2:
-                PrintTransactions();
+                ch2_showTransactions();
                 break;
             case 3:
                 System.out.println("3");
@@ -195,9 +184,24 @@ public class Helper {
                 break;
         }
     }
+    public void ch2_showTransactions() {
+        ArrayList list = new ArrayList<String>();
+        ArrayList<Transaction> data_transaction = get_transaction();
+        data_transaction.forEach(n -> {
+            n.removeFalseItem();
+            if (n.toString() != "[]") {
+                list.add(n.toString());
+            }
+        });
+        System.out.println("\n-- List Transactions : ");
+        for (int i = 0; i < data_transaction.size(); i++) {
+            System.out.println(data_transaction.get(i).display());
+        }
+    }
     
     public void pilihanCh5(int choice, ArrayList hasil){
         String pilihan = Integer.toString(choice);
+        System.out.println("\nRekomendasi bundle produk: ");
         for(int j = 0; j < hasil.size(); j++){
             
             ArrayList data = (ArrayList) hasil.get(j);
@@ -205,10 +209,9 @@ public class Helper {
             int ukuran = data.size();
             Data_Support.put(hasil.get(j).toString(), t_Obj.getSupport(data));
             
-            if(ukuran == data.size() && convert && ukuran != 1){
-                System.out.println(hasil.get(j).toString() +"-"+ t_Obj.getSupport(data));
-                System.out.println(Data_Support);
-                //if(Data_Support.)
+
+            if(ukuran == data.size() && convert && ukuran != 1 && t_Obj.getSupport(data) > get_transaction().size() / 5){
+                System.out.println(hasil.get(j).toString());
             }
             else{
                 //OutputHighHashMap(Data_Support);

@@ -41,6 +41,6 @@ public class Transaction {
     
     public String display(){
         removeFalseItem();
-        return "Name: " + name + "\nDate:" + date + "\nItems: " + item + "\n";
+        return "Name: " + name + "\nDate: " + date + "\nItems: " + item + "\n";
     }
 }
