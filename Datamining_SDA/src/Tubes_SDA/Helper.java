@@ -9,6 +9,7 @@ package Tubes_SDA;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.io.*;
+import static java.lang.Integer.parseInt;
 import java.util.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -135,6 +136,47 @@ public class Helper {
         return combination;
     }
     
+    public void MenuMain(){
+        System.out.println("-- Main Menu\n"
+                + "\t1. Show Product\n"
+                + "\t2. Show Transaction\n"
+                + "\t3. Best Seller Product\n"
+                + "\t4. Our Recomendation Bundle\n"
+                + "\t5. Product Recommendation Bundle\n"
+                + "\t6. Exit");
+    }
+    
+    public int getInput(){
+        int tmp;
+        
+        // Object Initialize
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("##Pilihan : ");
+        tmp = parseInt(scanner.nextLine());
+        
+        return tmp;
+    }
+    
+    public void pilihanMenu(int choice){
+        switch(choice){
+            case 1:
+                System.out.println("1");
+                break;
+            case 2:
+                System.out.println("2");
+                break;
+            case 3:
+                System.out.println("3");
+                break;
+            case 4:
+                System.out.println("4");
+                break;
+            case 5:
+                System.out.println("5");
+                break;
+        }
+    }
 //    public void CreateMappingSupport(ArrayList hasil){
 //        hasil.forEach(n -> {
 //            Mapping_Support.put(parseInt(konversiStringKey(String.valueOf(n))), 0);

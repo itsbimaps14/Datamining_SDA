@@ -28,13 +28,14 @@ public class Datamining_SDA {
         ArrayList<Transaction> data_transaction;
         ArrayList list = new ArrayList<String>();
         ArrayList<ArrayList<String>> hasil;
+        int choice;
         
-        String output[] = {" Not present in trie", " Present in trie"};
-        
+        // Object Declaration
         Helper helper = new Helper();
         Trie root = new Trie();
         Kombi kombi = new Kombi();
         
+        // Get Data
         hasil = kombi.generate(helper.get_product().size());
        
         // Construct trie 
@@ -70,19 +71,24 @@ public class Datamining_SDA {
                     root.CountSupport(helper.konversiObjString(String.valueOf(n)));                   
                 });
             }
-            else System.out.println(list.get(i) + output[0]); 
         }
         
-        System.out.println("\nSUPPORT TIAP HIMPUNAN:");
-        for(j = 0; j < hasil.size(); j++){
-            root.PrintAllDataSupport(hasil.get(j));
-        }
+        do{
+            helper.MenuMain();
+            choice = helper.getInput();
+            helper.pilihanMenu(choice);
+            System.out.println();
+        }while(choice != 6);
         
-        int threshold = data_transaction.size() / 5;
-        System.out.println("\nHIMPUNAN DIATAS THRESHOLD( > "+threshold+"):");
-        for(j = 0; j < hasil.size(); j++){
-            root.PrintPassedThreshold(hasil.get(j),threshold);
-        }
-
+//        System.out.println("SUPPORT TIAP HIMPUNAN:");
+//        for(j = 0; j < hasil.size(); j++){
+//            root.PrintAllDataSupport(hasil.get(j));
+//        }
+//        
+//        int threshold = data_transaction.size() / 5;
+//        System.out.println("\nHIMPUNAN DIATAS THRESHOLD( > "+threshold+"):");
+//        for(j = 0; j < hasil.size(); j++){
+//            root.PrintPassedThreshold(hasil.get(j),threshold);
+//        }
     }
 }
