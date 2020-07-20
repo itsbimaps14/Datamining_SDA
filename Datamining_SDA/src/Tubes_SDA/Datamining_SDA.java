@@ -39,7 +39,7 @@ public class Datamining_SDA {
         hasil = kombi.generate(helper.get_product().size());
        
         // Construct trie 
-        int i,j; 
+        int i;
         for (i = 0; i < hasil.size() ; i++){
             root.Insert(hasil.get(i));
         }
@@ -73,22 +73,22 @@ public class Datamining_SDA {
             }
         }
         
-//        do{
-//            helper.MenuMain();
-//            choice = helper.getInput();
-//            helper.pilihanMenu(choice, hasil, root);
-//            System.out.println();
-//        }while(choice != 6);
-        
         System.out.println("SUPPORT TIAP HIMPUNAN:");
-        for(j = 0; j < hasil.size(); j++){
-            root.PrintAllDataSupport(hasil.get(j));
+        for(i = 0; i < hasil.size(); i++){
+            root.PrintAllDataSupport(hasil.get(i));
         }
         
         int threshold = data_transaction.size() / 5;
         System.out.println("\nHIMPUNAN DIATAS THRESHOLD( > "+threshold+"):");
-        for(j = 0; j < hasil.size(); j++){
-            root.PrintPassedThreshold(hasil.get(j),threshold);
+        for(i = 0; i < hasil.size(); i++){
+            root.PrintPassedThreshold(hasil.get(i),threshold);
         }
+        
+        do{
+            helper.MenuMain();
+            choice = helper.getInput();
+            helper.pilihanMenu(choice, hasil, root);
+            System.out.println();
+        }while(choice != 6);
     }
 }

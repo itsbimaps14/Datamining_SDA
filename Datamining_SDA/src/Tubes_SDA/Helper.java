@@ -168,13 +168,13 @@ public class Helper {
                 ch1_showProduct();
                 break;
             case 2:
-                PrintTransactions();
+                ch2_showTransactions();
                 break;
             case 3:
-                System.out.println("3");
+                System.out.println("In Development");
                 break;
             case 4:
-                System.out.println("4");
+                System.out.println("In Development");
                 break;
             case 5:
                 ch5_productRecomBundle(hasil);
@@ -182,46 +182,66 @@ public class Helper {
         }
     }
     
+    // Tujuan : menampilkan daftar produk dari hasil input data pada layar.
+    public void ch1_showProduct() {
+        System.out.println("\n-- List Product : ");
+        data_product.forEach(n -> {
+            System.out.println("\t" + n.toString());
+        });
+    }
+    
+    // Tujuan : menampilkan data transaksi
+    public void ch2_showTransactions() {
+        ArrayList list = new ArrayList<String>();
+        ArrayList<Transaction> data_transaction = get_transaction();
+        data_transaction.forEach(n -> {
+            n.removeFalseItem();
+            if (n.toString() != "[]") {
+                list.add(n.toString());
+            }
+        });
+        System.out.println("\n-- List Transactions : ");
+        for (int i = 0; i < data_transaction.size(); i++) {
+            System.out.println(data_transaction.get(i).display());
+        }
+    }
+    
     // Tujuan : menampilkan bundle barang yang direkomendasikan berdasarkan input dari user
     public void pilihanCh5(int choice, ArrayList hasil){
         String pilihan = Integer.toString(choice);
-        
+        System.out.println("\nRekomendasi bundle produk: ");
         for(int j = 0; j < hasil.size(); j++){
             ArrayList data = (ArrayList) hasil.get(j);
             boolean convert = konversiStringKey(String.valueOf(hasil.get(j))).contains(pilihan);
             int ukuran = data.size();
             String tinggi = hasil.get(j).toString();
             Data_Support.put(hasil.get(j).toString(), t_Obj.getSupport(data));
-            
-            if(ukuran == data.size() && convert && ukuran != 1){
-                System.out.println(hasil.get(j).toString() +"-"+ t_Obj.getSupport(data));
-                if(Data_Support.get(tinggi) >= t_Obj.getSupport(data)){
-                    tinggi = hasil.get(j).toString();
-                    Data_Support.clear();
-                    Data_Support.put(hasil.get(j).toString(), t_Obj.getSupport(data));
-                }
-            }
-            else{
-                OutputHighHashMap(Data_Support);
-                Data_Support.clear();
+
+//            if(ukuran == data.size() && convert && ukuran != 1){
+//                System.out.println(hasil.get(j).toString() +"-"+ t_Obj.getSupport(data));
+//                if(Data_Support.get(tinggi) >= t_Obj.getSupport(data)){
+//                    tinggi = hasil.get(j).toString();
+//                    Data_Support.clear();
+//                    Data_Support.put(hasil.get(j).toString(), t_Obj.getSupport(data));
+//                }
+//            }
+//            else{
+//                OutputHighHashMap(Data_Support);
+//                Data_Support.clear();
+
+            if(ukuran == data.size() && convert && ukuran != 1 && t_Obj.getSupport(data) > (get_transaction().size() / 5)+10){
+                System.out.println(hasil.get(j).toString());
             }
         }
     }
     
-    // Tujuan : menampilkan daftar produk dari hasil input data pada layar.
-    public void ch1_showProduct(){
-        System.out.println("\n-- List Product : ");
-        data_product.forEach(n -> {
-            System.out.println("\t"+n.toString());
-        });
-    }
-    
-    // Tujuan : menampilkan list produk menggunakan method ch1_showProduct()
+    // Tujuan : Proses pilihan 5
     public void ch5_productRecomBundle(ArrayList hasil){
         ch1_showProduct();
         int choice = getInput();
         pilihanCh5(choice, hasil);
     }
+    
     
     // Tujuan : menampilkan nilai terbesar (pertama) dari sebuah hashMap
     public void OutputHighHashMap(Map hashMap){
