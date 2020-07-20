@@ -21,16 +21,15 @@ public class TrieNode {
     boolean isEndOfNumberSet;
     int support;
     
+    // Tujuan : accessor untuk field Support
     public int getSupport(){
         return support;
     }
     
-    TrieNode() 
-    {
+    TrieNode(){
         support = 0;
         isEndOfNumberSet = false;
-        for (int i = 0; i < NUMBER_SIZE; i++) 
-        {
+        for (int i = 0; i < NUMBER_SIZE; i++) {
             children[i] = null;
         }
     }

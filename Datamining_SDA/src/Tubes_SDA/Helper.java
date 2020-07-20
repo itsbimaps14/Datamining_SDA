@@ -27,76 +27,58 @@ public class Helper {
     // Kamus Data
     private ArrayList<Transaction> data_trans;
     private ArrayList<Product> data_product;
-    
-    // Map<Integer, Integer> Mapping_Support = new HashMap<Integer, Integer>();
     Map<String, Integer> Data_Support = new HashMap<String, Integer>();
     
     // Object
     Trie t_Obj;
     
+    // Tujuan : extracting data dari Sumber Data (JSON - product.json)
     public ArrayList get_product(){    
         Gson gson = new Gson();
-        
         try (Reader reader = new FileReader("src/Data_JSON/product.json")){
-            
             // Convert dari json menjadi list.   
             Type listtype = new TypeToken<ArrayList<Product>>(){}.getType();
-            data_product = gson.fromJson(reader, listtype);  
-            
-            // Print output data.
-            // data_product.forEach(System.out::println);
-
+            data_product = gson.fromJson(reader, listtype);
         }catch (IOException e) {
             e.printStackTrace();
         }
-        
         return data_product;
     }
     
+    // Tujuan : extracting data dari Sumber Data (JSON - transaction.json)
     public ArrayList get_transaction(){
         Gson gson = new Gson();
-        
         try (Reader reader = new FileReader("src/Data_JSON/transaction.json")){
-            
             // Convert dari json menjadi list.   
             Type listtype = new TypeToken<ArrayList<Transaction>>(){}.getType();
             data_trans = gson.fromJson(reader, listtype);  
-            
-            // Print output data.
-            // data_trans.forEach(System.out::println);
 
         }catch (IOException e) {
             e.printStackTrace();
         }
-        
         return data_trans;
     }
     
+    // Tujuan : extracting data dari tetapi items saja Sumber Data (JSON - transaction.json)
     public ArrayList get_items(){
         Gson gson = new Gson();
-        
         try (Reader reader = new FileReader("src/Data_JSON/transaction.json")){
-            
-            // Convert dari json menjadi list.   
             Type listtype = new TypeToken<ArrayList<Items>>(){}.getType();
-            data_trans = gson.fromJson(reader, listtype);  
-            
-            // Print output data.
-            // data_trans.forEach(System.out::println);
-
+            data_trans = gson.fromJson(reader, listtype);
         }catch (IOException e) {
             e.printStackTrace();
         }
-        
         return data_trans;
     }
     
+    // Tujuan : merubah String dari sebuah object menjadi ArrayList
     public ArrayList konversiObjString(String tmp){
         ArrayList myList;
         tmp = konversiStringAL(tmp);
         return myList = new ArrayList<String>(Arrays.asList(tmp.split(",")));
     }
     
+    // Tujuan : menghilangkan karakter “[“, “]”, dan “ “ dari sebuah String
     public String konversiStringAL(String tmp){
         tmp = tmp.replace("[", "");
         tmp = tmp.replace("]", "");
@@ -104,12 +86,14 @@ public class Helper {
         return tmp;
     }
     
+    // Tujuan : menghilangkan karakter “[“, “]”, dan “ “ dari sebuah String
     public String konversiStringKey(String tmp){
         tmp = konversiStringAL(tmp);
         tmp = tmp.replace(",", "");
         return tmp;
     }
     
+    // Tujuan
     public static <T> List<List<T>> combination(List<T> values, int size) {
 
         if (0 == size) {
@@ -140,6 +124,7 @@ public class Helper {
         return combination;
     }
     
+    // Tujuan : menampilkan menu program pada layar
     public void MenuMain(){
         System.out.println("** Main Menu\n"
                 + "\t1. Show Product\n"
@@ -150,31 +135,32 @@ public class Helper {
                 + "\t6. Exit");
     }
     
+    // Tujuan : meminta input dari user
     public int getInput(){
         int tmp;
-        
         // Object Initialize
         Scanner scanner = new Scanner(System.in);
-        
         System.out.print("## Pilihan : ");
         tmp = parseInt(scanner.nextLine());
-        
         return tmp;
     }
     
+    // Tujuan : menampilkan daftar transaksi dari hasil input data pada layar 
+    // saat user memilih pilihan 2 pada main menu
     public void PrintTransactions(){
         ArrayList list = new ArrayList<String>();
-        ArrayList<Transaction> data_transaction = get_transaction();
-        data_transaction.forEach(n -> {
+        data_trans.forEach(n -> {
             n.removeFalseItem();
             if (n.toString() != "[]") {
                 list.add(n.toString());
             }
         });
-        for (int i = 0; i < data_transaction.size(); i++)
-            System.out.println(data_transaction.get(i).display());
+        for (int i = 0; i < data_trans.size(); i++)
+            System.out.println(data_trans.get(i).display());
     }
     
+    // Tujuan : method switch yang berfungsi untuk menerima input dari user 
+    // lalu menjalankan case yang sesuai dengan input dari user
     public void pilihanMenu(int choice, ArrayList hasil, Trie root){
         t_Obj = root;
         switch(choice){
@@ -196,27 +182,33 @@ public class Helper {
         }
     }
     
+    // Tujuan : menampilkan bundle barang yang direkomendasikan berdasarkan input dari user
     public void pilihanCh5(int choice, ArrayList hasil){
         String pilihan = Integer.toString(choice);
+        
         for(int j = 0; j < hasil.size(); j++){
-            
             ArrayList data = (ArrayList) hasil.get(j);
             boolean convert = konversiStringKey(String.valueOf(hasil.get(j))).contains(pilihan);
             int ukuran = data.size();
+            String tinggi = hasil.get(j).toString();
             Data_Support.put(hasil.get(j).toString(), t_Obj.getSupport(data));
             
             if(ukuran == data.size() && convert && ukuran != 1){
                 System.out.println(hasil.get(j).toString() +"-"+ t_Obj.getSupport(data));
-                System.out.println(Data_Support);
-                //if(Data_Support.)
+                if(Data_Support.get(tinggi) >= t_Obj.getSupport(data)){
+                    tinggi = hasil.get(j).toString();
+                    Data_Support.clear();
+                    Data_Support.put(hasil.get(j).toString(), t_Obj.getSupport(data));
+                }
             }
             else{
-                //OutputHighHashMap(Data_Support);
-                //Data_Support.clear();
+                OutputHighHashMap(Data_Support);
+                Data_Support.clear();
             }
         }
     }
     
+    // Tujuan : menampilkan daftar produk dari hasil input data pada layar.
     public void ch1_showProduct(){
         System.out.println("\n-- List Product : ");
         data_product.forEach(n -> {
@@ -224,30 +216,14 @@ public class Helper {
         });
     }
     
+    // Tujuan : menampilkan list produk menggunakan method ch1_showProduct()
     public void ch5_productRecomBundle(ArrayList hasil){
         ch1_showProduct();
         int choice = getInput();
         pilihanCh5(choice, hasil);
     }
-//    public void CreateMappingSupport(ArrayList hasil){
-//        hasil.forEach(n -> {
-//            Mapping_Support.put(parseInt(konversiStringKey(String.valueOf(n))), 0);
-//        });
-//        SortHashMap();
-//    }
-//    
-//    public void SortHashMap(Map hashMap){
-//        // TreeMap to store values of HashMap 
-//        TreeMap<Integer, Integer> sorted = new TreeMap<>(); 
-//  
-//        // Copy all data from hashMap into TreeMap 
-//        sorted.putAll(hashMap); 
-//  
-//        // Display the TreeMap which is naturally sorted 
-//        for (Map.Entry<Integer, Integer> entry : sorted.entrySet())  
-//            System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
-//    }
     
+    // Tujuan : menampilkan nilai terbesar (pertama) dari sebuah hashMap
     public void OutputHighHashMap(Map hashMap){
         // TreeMap to store values of HashMap 
         TreeMap<String, Integer> sorted = new TreeMap<>(); 

@@ -73,22 +73,22 @@ public class Datamining_SDA {
             }
         }
         
-        do{
-            helper.MenuMain();
-            choice = helper.getInput();
-            helper.pilihanMenu(choice, hasil, root);
-            System.out.println();
-        }while(choice != 6);
+//        do{
+//            helper.MenuMain();
+//            choice = helper.getInput();
+//            helper.pilihanMenu(choice, hasil, root);
+//            System.out.println();
+//        }while(choice != 6);
         
-//        System.out.println("SUPPORT TIAP HIMPUNAN:");
-//        for(j = 0; j < hasil.size(); j++){
-//            root.PrintAllDataSupport(hasil.get(j));
-//        }
-//        
-//        int threshold = data_transaction.size() / 5;
-//        System.out.println("\nHIMPUNAN DIATAS THRESHOLD( > "+threshold+"):");
-//        for(j = 0; j < hasil.size(); j++){
-//            root.PrintPassedThreshold(hasil.get(j),threshold);
-//        }
+        System.out.println("SUPPORT TIAP HIMPUNAN:");
+        for(j = 0; j < hasil.size(); j++){
+            root.PrintAllDataSupport(hasil.get(j));
+        }
+        
+        int threshold = data_transaction.size() / 5;
+        System.out.println("\nHIMPUNAN DIATAS THRESHOLD( > "+threshold+"):");
+        for(j = 0; j < hasil.size(); j++){
+            root.PrintPassedThreshold(hasil.get(j),threshold);
+        }
     }
 }

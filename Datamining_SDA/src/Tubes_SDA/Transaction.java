@@ -17,11 +17,12 @@ import java.util.ArrayList;
  * Deskripsi :
  */
 public class Transaction {
-    private String id, name, date, time, list_item;
+    private String id, name, date, time, text;
     private int index;
     private ArrayList<Items> item;
     private ArrayList<String> data = new ArrayList<String>();
     
+    // Tujuan : me-remove elemen pada arraylist yang statusnya bernilai false pada list item di daftar transaksi.
     public void removeFalseItem(){
         for(int x = item.size() - 1; x >= 0; x--){
             if(!item.get(x).getStatus()){
@@ -30,6 +31,7 @@ public class Transaction {
         }
     }
     
+    // Tujuan : mengambil data items kemudian dimasukkan ke dalam ArrayList of String dan dikembalikan
     public ArrayList<String> getData(){
         data.add(item.toString());
         return data;
@@ -41,6 +43,6 @@ public class Transaction {
     
     public String display(){
         removeFalseItem();
-        return "Name: " + name + "\nDate:" + date + "\nItems: " + item + "\n";
+        return "Name: " + name + "\nDate: " + date + "\nItems: " + item + "\n";
     }
 }

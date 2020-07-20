@@ -15,12 +15,13 @@ import java.util.ArrayList;
 public class Trie {
     public TrieNode root;
     
+    // Constructor
     public Trie() {
         root = new TrieNode();
     }
     
-    void Insert(ArrayList<String> key) 
-    { 
+    // Tujuan : untuk insert parameter key sebagai TreeNode secara looping per karakter dari key
+    void Insert(ArrayList<String> key){ 
         int level; 
         int length = key.size();
         int index; 
@@ -40,8 +41,8 @@ public class Trie {
         pCrawl.isEndOfNumberSet = true; 
     }
     
-    boolean Search(ArrayList<String> key) 
-    { 
+    // Tujuan : mencari rangkaian node berdasarkan parameter key
+    boolean Search(ArrayList<String> key){ 
         int level; 
         int length = key.size(); 
         int index; 
@@ -59,8 +60,10 @@ public class Trie {
         return (pCrawl != null && pCrawl.isEndOfNumberSet); 
     }
     
-    void CountSupport(ArrayList<String> key) 
-    { 
+    // Tujuan : cara kerja yang mirip dengan method search, hanya saja ketika 
+    // key yang dicari telah ditemukan maka key tersebut akan ditambahkan 
+    // nilai support nya senilai +1
+    void CountSupport(ArrayList<String> key){ 
         int level; 
         int length = key.size(); 
         int index; 
@@ -77,8 +80,8 @@ public class Trie {
         pCrawl.support++; 
     }
     
-    int getSupport(ArrayList<String> key)
-    {
+    // Tujuan : mengembalikan nilai support dari parameter key
+    int getSupport(ArrayList<String> key){
         int level; 
         int length = key.size(); 
         int index; 
@@ -97,6 +100,7 @@ public class Trie {
         return (pCrawl.support); 
     }
     
+    // Tujuan : menampilkan key yang nilai support nya melampaui nilai threshold yang ditentukan
     void PrintPassedThreshold (ArrayList<String> key, int Threshold){
         int level; 
         int length = key.size(); 
@@ -113,6 +117,7 @@ public class Trie {
             System.out.println(key + " Dengan Support = " + pCrawl.support);
     }
     
+    //Tujuan : untuk menampilkan key dengan nilai supportnya
     void PrintAllDataSupport (ArrayList<String> key){
         int level; 
         int length = key.size(); 
